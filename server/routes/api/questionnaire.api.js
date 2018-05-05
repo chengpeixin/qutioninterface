@@ -80,7 +80,25 @@ class Questionnaire {
       new: true
     }
     const result = await Question.findOneAndUpdate(conditions, update, options)
-    ctx.body = result;
+    if (result.show == 0) {
+      ctx.body = {
+        data: {
+          status: {
+            code: 200,
+            message: "OK"
+          }
+        }
+      }
+    } else {
+      ctx.body = {
+        data: {
+          status: {
+            code: 203,
+            message: "删除错误"
+          }
+        }
+      }
+    }
   }
 }
 
