@@ -11,12 +11,14 @@ require('./database/init').initSchema()
 require('./data/')
 
 const routes = require('./routes/route')
-const port = 8070;
+const port = 8083;
 // 获取命令行参数
 const arguments = process.argv;
 
 app
-  .use(serve(__dirname + "/dist/", { extensions: ['html'] }))
+  .use(serve(__dirname + "/dist/", {
+    extensions: ['html']
+  }))
   .use(cors({
     exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
     allowHeaders: ['Content-Type', 'Authorization', 'Accept']

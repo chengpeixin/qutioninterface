@@ -23,9 +23,9 @@ class Questionnaire {
     const result = await Question.find({})
     const data = []
     result.forEach(item => {
-      if (item.show != 1) {
-        return;
-      }
+      // if (item.show != 1) {
+      //   return;
+      // }
       data.push({
         id: item.id,
         wjName: item.wjName,
