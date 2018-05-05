@@ -23,15 +23,14 @@ class Questionnaire {
     const result = await Question.find({})
     const data = []
     result.forEach(item => {
-      // if (item.show != 1) {
-      //   return;
-      // }
-      data.push({
-        id: item.id,
-        wjName: item.wjName,
-        examWjid: item.examWjid,
-        wjCode: item.wjCode
-      })
+      if (item.show == 1) {
+        data.push({
+          id: item.id,
+          wjName: item.wjName,
+          examWjid: item.examWjid,
+          wjCode: item.wjCode
+        })
+      }
     })
     ctx.body = {
       data
