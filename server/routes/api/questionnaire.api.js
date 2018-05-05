@@ -100,6 +100,9 @@ class Questionnaire {
       }
     }
   }
+  static async addqution(ctx) {
+
+  }
 }
 
 module.exports = Questionnaire;
