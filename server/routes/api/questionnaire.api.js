@@ -59,19 +59,19 @@ class Questionnaire {
   }
   static async removeqution(ctx) { //删除问卷
     const params = ctx.request.body;
-    // if (!params.id) {
-    //   ctx.body = {
-    //     data: {
-    //       status: {
-    //         code: 203,
-    //         message: "无法获取到id"
-    //       }
-    //     }
-    //   }
-    //   return;
-    // }
+    if (!params.id) {
+      ctx.body = {
+        data: {
+          status: {
+            code: 203,
+            message: "无法获取到id"
+          }
+        }
+      }
+      return;
+    }
     const conditions = {
-      id: ctx.query.id
+      id: params.id
     }
     const update = {
       show: 0
