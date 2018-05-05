@@ -3,26 +3,30 @@ const Schema = mongoose.Schema
 const ObjectId = Schema.ObjectId
 
 const QuestionnaireList_schema = new Schema({
-  id:Number,
-  wjName:{
+  id: Number,
+  wjName: {
     unique: true,
-    type:String
+    type: String
   },
-  examWjid:Number,
-  wjCode:{
+  examWjid: Number,
+  wjCode: {
     unique: true,
-    type:String
+    type: String
   },
   brand: {
-    default:"null",
-    type:Object
+    default: "null",
+    type: Object
   },
-  questionnaire:{
-    default:"null",
-    type:Object
+  questionnaire: {
+    default: "null",
+    type: Object
+  },
+  show: {
+    default: 1,
+    type: Number
   }
 })
-QuestionnaireList_schema.pre('save',function(next){
+QuestionnaireList_schema.pre('save', function (next) {
   next()
 })
 

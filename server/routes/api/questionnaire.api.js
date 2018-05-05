@@ -23,6 +23,9 @@ class Questionnaire {
     const result = await Question.find({})
     const data = []
     result.forEach(item => {
+      if (item.show != 1) {
+        return;
+      }
       data.push({
         id: item.id,
         wjName: item.wjName,
@@ -57,20 +60,28 @@ class Questionnaire {
   }
   static async removeqution(ctx) { //删除问卷
     const params = ctx.request.body;
-    if (!params.id) {
-      ctx.body = {
-        data: {
-          status: {
-            code: 203,
-            message: "无法获取到id"
-          }
-        }
-      }
-      return;
+    // if (!params.id) {
+    //   ctx.body = {
+    //     data: {
+    //       status: {
+    //         code: 203,
+    //         message: "无法获取到id"
+    //       }
+    //     }
+    //   }
+    //   return;
+    // }
+    const conditions = {
+      id: ctx.query.id
     }
-    const result = await Question.findOne({
-      id: params.id
-    })
+    const update = {
+      show: 0
+    }
+    const options = {
+      new: true
+    }
+    const result = await Question.findOneAndUpdate(conditions, update, options)
+    ctx.body = result;
   }
 }
 
